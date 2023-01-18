@@ -4,7 +4,8 @@
   <input v-model="mailtext" placeholder="Mail">
   <p>Password</p>
   <input v-model="passwordtext" placeholder="Password">
-  <button v-on:click="loginuser">Register</button>
+  <button v-on:click="loginuser">Login</button>
+  <button v-on:click="disconnectuser">Disconnect</button>
 
   <p>Your token: {{youruuid}}</p>
 </template>
@@ -41,8 +42,12 @@ export default {
         body : JSON.stringify(data)
 
       }).then(response=>response.json())
-          .then(data=>{ console.log(data.token); localStorage.setItem("usertoken", data.token); this.youruuid = data.token })
+          .then(data=>{ console.log(data.token); localStorage.setItem("usertoken", data.token); this.youruuid = data.token; this.$router.push('/movies') })
       // Store the generated token in the localstorage under the key 'usertoken'
+    },
+    disconnectuser(){
+      localStorage.setItem("usertoken", '')
+      window.alert("User successfully disconnect")
     }
   }
 }

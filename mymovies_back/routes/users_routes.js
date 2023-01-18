@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require("cors");
+const controller = require("../controllers/movies_controller");
 const app = express()
 
 require('dotenv').config()

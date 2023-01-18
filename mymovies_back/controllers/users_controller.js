@@ -12,11 +12,12 @@ const { v4: uuidv4 } = require('uuid');
 
 connection.connect()
 
+
 module.exports.getallmovies = function(req, res){
     connection.query('SELECT * FROM MyMovies.movies;', (err, rows, field)=>{
         if (err) throw err
 
-        res.json(rows)
+        res.send(rows)
     })
 }
 
